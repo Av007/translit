@@ -5,18 +5,18 @@ symfony2-slug
 <h3>Usage</h3>
 1. Add Utils folder to YOUR_BUNDLE
 2. Add in /src/../config/services.yml <br />
-<code>
+<pre>
 parameters:
   acme.text.class: Acme\WebBundle\Utils\Text
 
 services:
   acme.helper.text:
     class: %acme.text.class%
-</code><br />
+</pre><br />
 3. After use in controller according your logic as you want <br />
-<code>
+<pre>
 $data->setSlug($helper::urlFormat($data->getId().'-'.$data->getTitle()));
-</code><br />
+</pre><br />
 
 <h3>Functionality</h3>
 - Translation (russian, german and etc, except chinese japanese, thai... and other asian and Arabyan countries)
