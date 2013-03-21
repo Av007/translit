@@ -7,10 +7,10 @@ symfony2-slug
 2. Add in /src/../config/services.yml: <br />
 <pre>
 parameters:
-  acme.text.class: Acme\WebBundle\Utils\Text
+  acme.text.class: Acme\WebBundle\Utils\Text<br>
 services:
-  acme.helper.text:
-    class: %acme.text.class%
+&nbsp;&nbsp;acme.helper.text:
+&nbsp;&nbsp;&nbsp;&nbsp;class: %acme.text.class%
 </pre><br />
 3. After use in controller according your logic as you want <br />
 <code>
