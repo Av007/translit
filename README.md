@@ -7,7 +7,7 @@ symfony2-slug
 2. Add in /src/../config/services.yml: <br />
 <pre>
 parameters:
-  acme.text.class: Acme\WebBundle\Utils\Text<br>
+&nbsp;&nbsp;acme.text.class: Acme\WebBundle\Utils\Text<br>
 services:
 &nbsp;&nbsp;acme.helper.text:
 &nbsp;&nbsp;&nbsp;&nbsp;class: %acme.text.class%
