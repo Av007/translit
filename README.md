@@ -8,7 +8,6 @@ symfony2-slug
 <pre>
 parameters:
   acme.text.class: Acme\WebBundle\Utils\Text
-
 services:
   acme.helper.text:
     class: %acme.text.class%
