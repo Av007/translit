@@ -14,6 +14,7 @@ services:
 </pre><br />
 3. After use in controller according your logic as you want <br />
 <code>
+<?php
 $helper = $this->get('optimum.helper.text');<br>
 $data->setSlug($helper::urlFormat($data->getId().'-'.$data->getTitle()));
 </code><br />
