@@ -14,4 +14,11 @@ services:
     class: %acme.text.class%
 </code><br />
 3. After use in controller according your logic as you want <br />
-<code>$data->setSlug($helper::urlFormat($data->getId().'-'.$data->getTitle()));</code><br />
+<code>
+$data->setSlug($helper::urlFormat($data->getId().'-'.$data->getTitle()));
+</code><br />
+
+<h3>Functionality</h3>
+- Translation (russian, german and etc, except chinese japanese, thai... and other asian and Arabyan countries)
+- Url format (validation on an allowed values)
+- Cut too long url by words
