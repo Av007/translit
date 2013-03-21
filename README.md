@@ -1,6 +1,6 @@
 symfony2-slug
 =============
-<pre>Slug as a service</pre>
+<p>Slug as a service</p>
 <br>
 <h3>Usage</h3>
 1. Add Utils folder to YOUR_BUNDLE
@@ -15,6 +15,7 @@ services:
 </pre><br />
 3. After use in controller according your logic as you want <br />
 <code>
+$helper = $this->get('optimum.helper.text');
 $data->setSlug($helper::urlFormat($data->getId().'-'.$data->getTitle()));
 </code><br />
 
