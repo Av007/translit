@@ -1,6 +1,6 @@
 symfony2-slug
 =============
-<h1>Slug as a service</h1>
+<pre>Slug as a service</pre>
 <br>
 <h3>Usage</h3>
 1. Add Utils folder to YOUR_BUNDLE
