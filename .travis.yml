@@ -6,6 +6,7 @@ php:
   - hhvm # on Trusty only
   - nightly
 script:
+  - composer install
   - ./vendor/bin/phpunit --coverage-text
 notifications:
   email:
