@@ -1,8 +1,7 @@
 Translit
 =============
 
-https://travis-ci.org/Av007/translit.svg?branch=master
-
+[![Build Status](https://travis-ci.org/Av007/translit.svg?branch=master)](https://travis-ci.org/Av007/translit)
 
 The helper for url translation.
 
@@ -16,4 +15,12 @@ Usage
 ```
 $title = Text::urlFormat('тест *?тест');
 echo $title; // test-test 
+```
+
+Tests
+----
+
+```
+composer install
+./vendor/bin/phpunit -c phpunit.xml.dist --coverage-text
 ```
