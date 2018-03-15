@@ -1,53 +1,49 @@
 <?php
+/** Text Helper */
 
-namespace Acme\WebBundle\Utils;
+namespace Translit\Helper;
 
+
+/**
+ * Class Text
+ *
+ * @package Acme\WebBundle\Utils
+ * @author Vladimir Avdeev <avdeevvladimir@gmail.com>
+ */
 class Text
 {
-    // max lenght of url
-    const SLUG_LENGHT = 96;
+    const SLUG_LENGTH = 96; // max length
 
     /**
      * @static
-     * @param $text
-     * @param null $culture
+     * @param string $text
      * @return mixed|string
      */
-    static public function slugify( $text )
+    static public function slugify($text)
     {
         // trim and lowercase
-        $text = mb_strtolower( trim( $text ), 'UTF-8' );
+        $text = mb_strtolower(trim($text), 'UTF-8');
 
         // replace multiple spaces or tabs with a single -
-        $text = preg_replace( '/\s+/u', '-', $text );
+        $text = preg_replace('/\s+/u', '-', $text);
 
         // remove ['"`’] from text
-        $text = preg_replace( '/[\\\'\"`’]+/u', '', $text );
+        $text = preg_replace('/[\\\'\"`’]+/u', '', $text);
 
         // remove all punctuation signs
-        $text = preg_replace( '/[\+,\.&!\?:;#~=\/\$£\^\(\)_<>%-]+/u', '-', $text );
+        $text = preg_replace('/[\+,\.&!\?:;#~=\/\$£\^\(\)_<>%-]+/u', '-', $text);
 
-        return $text;
+        return trim($text, '-');
     }
 
     /**
      * Manual transliteration.
      *
-     * @param $text
+     * @param string $text
      * @return string
      */
-    public static function transliterate( $text )
+    public static function transliterate($text)
     {
-        $caps = array(
-
-            // others
-            'Š'=>'S', 'Đ'=>'Dj', 'đ'=>'dj', 'Ž'=>'Z', 'Č'=>'C', 'Ć'=>'C', 'À'=>'A', 'Á'=>'A', 'Ã'=>'A',
-            'Å'=>'A', 'Æ'=>'A',  'Ç'=>'C',  'È'=>'E', 'É'=>'E', 'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I',
-            'Ï'=>'I', 'Ñ'=>'N',  'Ò'=>'O',  'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U',
-            'Ú'=>'U', 'Û'=>'U',  'Ü'=>'U',  'Ý'=>'Y',
-        );
-
-        // manually replace known lowercase characters
         $lowerCase = array(
             // romanian
             'Ä' => 'A', 'Ă' => 'A', 'Â' => 'A', 'Î' => 'I', 'Ș' => 'S', 'Ş' => 'S', 'Ț' => 'T', 'Ţ' => 'T',
@@ -74,27 +70,28 @@ class Text
             'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u',
             'ý'=>'y', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y', 'Ŕ'=>'R', 'ŕ'=>'r',
         );
-        $strtrText = strtr( $text, $lowerCase );
+        $strtrText = strtr($text, $lowerCase);
         $text = $strtrText ? $strtrText : $text;
 
         // replace all utf-8 special chars with iso equivalent
-        $iconvText = @iconv( 'UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', $text );
-        $text = $iconvText ? $iconvText : $text;
+        $iconvText = @iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', $text);
 
-        return $text;
+        return $iconvText ? $iconvText : $text;
     }
 
     /**
      * Makes pretty url
      *
-     * @param $text
+     * @param string $text
      * @return string
      */
     public static function urlFormat($text)
     {
         $text = self::transliterate($text);
-        if(strlen($text) > self::SLUG_LENGHT)
-            $text = (preg_match('/^(.*)\W.*$/', substr($text, 0, self::SLUG_LENGHT+1), $matches) ? $matches[1] : substr($text, 0, self::SLUG_LENGHT));
+        if (strlen($text) > self::SLUG_LENGTH) {
+            $text = (preg_match('/^(.*)\W.*$/', substr($text, 0, self::SLUG_LENGTH + 1), $matches) ? $matches[1] :
+                substr($text, 0, self::SLUG_LENGTH));
+        }
 
         return self::slugify($text);
     }

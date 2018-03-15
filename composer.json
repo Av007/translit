@@ -1,0 +1,25 @@
+{
+  "name": "av007/translit",
+  "description": "The helper for url translation.",
+  "minimum-stability": "stable",
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "Vladimir Avdeev",
+      "email": "avdeevvladimir@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Translit\\Helper\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Translit\\Test\\": "tests/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.8"
+  }
+}
