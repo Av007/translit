@@ -6,8 +6,8 @@ php:
   - hhvm # on Trusty only
   - nightly
 script:
-  - composer install
-  - ./vendor/bin/phpunit --coverage-text
+  - composer install --prefer-source --no-interaction --dev
+  - ./vendor/bin/phpunit -c phpunit.xml.dist --coverage-text
 notifications:
   email:
     - avdeevvladimir@gmail.com

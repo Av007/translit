@@ -1,5 +1,9 @@
 Translit
 =============
+
+https://travis-ci.org/Av007/translit.svg?branch=master
+
+
 The helper for url translation.
 
 - Translation (russian, german and etc, except chinese japanese, thai... and other asian and Arabyan countries)
